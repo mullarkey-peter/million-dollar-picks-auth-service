@@ -9,6 +9,7 @@ services:
     container_name: auth-service
     ports:
       - "8080:8080"
+      - "9090:9090"
     depends_on:
       - postgres
     environment:
@@ -18,8 +19,6 @@ services:
       - SPRING_FLYWAY_URL=jdbc:postgresql://postgres:5432/authdb
       - SPRING_FLYWAY_USER=postgres
       - SPRING_FLYWAY_PASSWORD=postgres
-      # Disable authentication
-      - AUTHENTICATION_ENABLED=false
     networks:
       - milliondollarpicks-network
     restart: unless-stopped

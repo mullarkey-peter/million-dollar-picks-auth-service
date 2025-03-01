@@ -1,37 +1,80 @@
-HELP.md
-.gradle
+# Compiled source code
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+*.class
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# Packaging files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Gradle files
+.gradle/
+/build/
+
+# IntelliJ IDEA files
+.idea/
 *.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Eclipse files
+.classpath
+.project
+.settings/
+bin.bak/
 
-### VS Code ###
-.vscode/
+# Log files
+*.log
+
+# macOS files
+.DS_Store
+
+# NetBeans files
+nbproject/private/
+build/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Docker files
+docker-compose.override.yml
+.dockerenv
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# OS files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Java Keystore files
+*.jks
+*.keystore
+
+# Flyway migration history
+/src/main/resources/db/migration/
+
+# Dependency files
+lib/
+
+# Protocol Buffers
+*.pb.go
+*.pb.dart
+*.pb.cc
+*.pb.h
+*.pb.rs
+
+# Repomix file
+repomix-output.txt

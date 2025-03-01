@@ -28,20 +28,17 @@ public class GrpcServerConfig {
     @Bean
     public Server grpcServer() throws IOException {
         log.info("Starting gRPC server on port {}", grpcPort);
-
         Server server = ServerBuilder.forPort(grpcPort)
                 .addService(authGrpcService)
                 .build();
-
         server.start();
-
+        log.info("gRPC server started, listening on port {}", grpcPort);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             log.info("Shutting down gRPC server");
             if (server != null) {
                 server.shutdown();
             }
         }));
-
         return server;
     }
 }
