@@ -145,4 +145,11 @@ public class AuthServiceImpl implements AuthService {
             return false;
         }
     }
+
+    @Override
+    public CredentialsDto findCredentialsByUserId(Long userId) {
+        return credentialsRepository.findByUserId(userId)
+                .map(credentialsMapper::toDto)
+                .orElse(null);
+    }
 }

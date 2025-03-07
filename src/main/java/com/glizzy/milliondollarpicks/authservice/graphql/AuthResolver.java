@@ -108,9 +108,7 @@ public class AuthResolver {
     @DgsMutation
     public AuthResponseDto login(@InputArgument String username, @InputArgument String password) {
         log.debug("login mutation called for username: {}", username);
-
         LoginRequestDto loginRequest = new LoginRequestDto(username, password);
-
         try {
             AuthResponseDto response = authService.login(loginRequest);
             log.debug("Login response: success={}, userId={}", response.getSuccess(), response.getUserId());
@@ -124,7 +122,6 @@ public class AuthResolver {
             throw e;
         }
     }
-
     @DgsMutation
     public AuthResponseDto logout(@InputArgument String token, DataFetchingEnvironment env) {
         log.debug("logout mutation called with token parameter present: {}", token != null && !token.isEmpty());
