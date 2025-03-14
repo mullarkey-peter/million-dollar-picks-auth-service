@@ -10,4 +10,5 @@ public interface AuthService {
     CredentialsDto createCredentials(String username, String password, Long userId);
     void resetPassword(String username, String newPassword);
     boolean validateToken(String token);
+    CredentialsDto findCredentialsByUserId(Long userId);
 }

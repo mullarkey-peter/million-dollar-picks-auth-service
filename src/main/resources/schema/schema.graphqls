@@ -2,7 +2,7 @@ scalar DateTime
 
 type Query {
     validateToken(token: String): Boolean
-    me(token: String): UserInfo
+    me(token: String!): User
 }
 
 type Mutation {
@@ -14,10 +14,9 @@ type Mutation {
 
 type AuthResponse {
     token: String
-    userId: ID
-    username: String
     success: Boolean!
     message: String
+    user: User
 }
 
 type Credentials {
@@ -27,14 +26,8 @@ type Credentials {
     accountLocked: Boolean
 }
 
-# Instead of UserReference with @key directive, use a local type
-type UserInfo {
+type User @key(fields: "id") @extends{
     id: ID!
     username: String!
+    credentials: Credentials
 }
-
-# Keep this commented for later federation use
-# type UserReference @key(fields: "id") {
-#     id: ID!
-#     username: String!
-# }
