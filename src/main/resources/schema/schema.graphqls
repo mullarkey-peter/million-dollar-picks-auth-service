@@ -27,7 +27,7 @@ type Credentials {
 }
 
 type User @key(fields: "id") @extends{
-    id: ID!
+    id: ID!  @external
     username: String!
     credentials: Credentials
 }

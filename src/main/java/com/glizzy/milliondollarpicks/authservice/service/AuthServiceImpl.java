@@ -28,6 +28,7 @@ import java.util.Map;
 public class AuthServiceImpl implements AuthService {
 
     private final CredentialsRepository credentialsRepository;
+    private final KafkaProducerService kafkaProducerService;
     private final CredentialsMapper credentialsMapper;
     private final PasswordEncoder passwordEncoder;
 
@@ -83,12 +84,17 @@ public class AuthServiceImpl implements AuthService {
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
 
-        return AuthResponseDto.builder()
+        AuthResponseDto response = AuthResponseDto.builder()
                 .token(token)
                 .userId(credentials.getUserId())
                 .username(credentials.getUsername())
                 .success(true)
                 .build();
+
+        // Publish login event
+        kafkaProducerService.publishLoginEvent(credentials.getUsername());
+
+        return response;
     }
 
     @Override
